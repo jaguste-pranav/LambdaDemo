@@ -15,6 +15,7 @@ namespace PersonDataManagement
             findAverageInList(listPersonInCity);
             findPersonInList(listPersonInCity);
             findPeopleMorethanSixty(listPersonInCity);
+            removePersonfromList(listPersonInCity);
             Console.ReadKey();
         }
         private static void AddRecords(List<Person> listPersonInCity)
@@ -77,6 +78,28 @@ namespace PersonDataManagement
             foreach (Person p in listPersonInCity.FindAll(e => e.Age > 60))
             {
                 Console.WriteLine("Name: " + p.Name + " Age: " + p.Age);
+            }
+        }
+
+        private static void removePersonfromList(List<Person> listPersonInCity)
+        {
+            Console.WriteLine("The initial list is- ");
+            foreach (Person p in listPersonInCity)
+            {
+                Console.WriteLine("Name: " + p.Name);
+            }
+            Console.WriteLine("Enter the name to delete: ");
+            string name = Console.ReadLine();
+
+            foreach (Person p in listPersonInCity.FindAll(e => e.Name == name))
+            {
+                listPersonInCity.Remove(p);
+            }
+
+            Console.WriteLine("The final list is- ");
+            foreach (Person p in listPersonInCity)
+            {
+                Console.WriteLine("Name: " + p.Name);
             }
         }
     }
